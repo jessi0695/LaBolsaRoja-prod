@@ -1,4 +1,4 @@
-let productos;
+/* let productos;
 let cardGroup = document.getElementsByClassName("row");
 let carrito=[];
 let cantidad;
@@ -11,9 +11,20 @@ function agregarAlCarrito(idk) {
   let price = productos[idk].price;
   let image = productos[id].image;
   let cantidad = Math.round(document.getElementById(`cantidad${idk}`).value);
+} */
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("http://127.0.0.1:8080/api/producto/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
 
   // Verificar si el producto ya existe en el carrito
-  let productoExistente = carrito.find(p => p.id === id);
+/*   let productoExistente = carrito.find(p => p.id === id);
   if (productoExistente) {
     productoExistente.inventary = parseInt(productoExistente.inventary) + parseInt(cantidad);
   } else {
@@ -26,9 +37,10 @@ function agregarAlCarrito(idk) {
 
 
 if (localStorage.getItem("productos") == null && cardGroup[0].childElementCount === 0) {
-  /* let promesa= */fetch('./js/productos.json')
+  fetch('http://127.0.0.1:8080/api/producto/',{method:'get'})
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       localStorage.setItem("productos", JSON.stringify(data));
       productos = data;
       data.forEach(element => {
@@ -130,4 +142,4 @@ if (localStorage.getItem("productos") == null && cardGroup[0].childElementCount 
                     `;
     cardGroup[0].insertAdjacentHTML("beforeend", html);
   });
-}
+} */
