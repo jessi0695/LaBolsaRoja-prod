@@ -1,4 +1,4 @@
-/* let productos;
+let productos;
 let cardGroup = document.getElementsByClassName("row");
 let carrito=[];
 let cantidad;
@@ -11,20 +11,9 @@ function agregarAlCarrito(idk) {
   let price = productos[idk].price;
   let image = productos[id].image;
   let cantidad = Math.round(document.getElementById(`cantidad${idk}`).value);
-} */
-var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
-
-fetch("http://127.0.0.1:8080/api/producto/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
 
   // Verificar si el producto ya existe en el carrito
-/*   let productoExistente = carrito.find(p => p.id === id);
+  let productoExistente = carrito.find(p => p.id === id);
   if (productoExistente) {
     productoExistente.inventary = parseInt(productoExistente.inventary) + parseInt(cantidad);
   } else {
@@ -32,24 +21,24 @@ fetch("http://127.0.0.1:8080/api/producto/", requestOptions)
     carrito.push({ id: id, title: title, price: price, inventary: cantidad, image: image });
   }
 
-  localStorage.setItem("carrito", JSON.stringify(carrito));
+localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
 
 if (localStorage.getItem("productos") == null && cardGroup[0].childElementCount === 0) {
-  fetch('http://127.0.0.1:8080/api/producto/',{method:'get'})
+fetch('http://127.0.0.1:8080/api/producto/',{method:'GET'})
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-      localStorage.setItem("productos", JSON.stringify(data));
+		console.log(data);
+     localStorage.setItem("productos", JSON.stringify(data));
       productos = data;
-      data.forEach(element => {
+      productos.forEach(element => {
         let html =
           `<div class="col ">
                     <div class="card h-350 ">
-                        <img  src=${element.image} class="card-img-top card-image">
+                        <img  src=${element.img} class="card-img-top card-image">
                             <div class="card-body">
-                                <h5 class="card-title">${element.title}</h5>
+                                <h5 class="card-title">${element.nombre}</h5>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#openModal${index}">
                                 Ver ítem</button>
                 </div>
@@ -60,17 +49,17 @@ if (localStorage.getItem("productos") == null && cardGroup[0].childElementCount 
         <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">${element.title}</h5>
+            <h5 class="modal-title">${element.nombre}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
           <br><p>
-            <img  src=${element.image} class="card-img-top card-image">
+            <img  src=${element.img} class="card-img-top card-image">
             </p>
             
 <div class="row g-2">
   <div class="col-sm-6">
-    <a>Precio: ${element.price}</a>
+    <a>Precio: ${element.precio}</a>
   </div>
   <div class="col-sm">
   <a>Cantidad: <input type="number" id="cantidad${index}" class="form-control" placeholder="" aria-label="State" value="1" max="5" min ="1"></a>
@@ -99,10 +88,10 @@ if (localStorage.getItem("productos") == null && cardGroup[0].childElementCount 
     let html =
       `<div class="col ">
                     <div class="card h-350 ">
-                        <img  src=${element.image} class="card-img-top card-image">
+                        <img  src=${element.img} class="card-img-top card-image">
                             <div class="card-body">
-                                <h5 class="card-title">${element.title}</h5>
-                                <p class ="card-text">${element.description}</p>
+                                <h5 class="card-title">${element.nombre}</h5>
+                                <p class ="card-text">${element.descripcion}</p>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#openModal${index}">
                                 Ver ítem</button>
                 </div>
@@ -113,17 +102,17 @@ if (localStorage.getItem("productos") == null && cardGroup[0].childElementCount 
         <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">${element.title}</h5>
+            <h5 class="modal-title">${element.nombre}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
           <br><p>
-            <img  src=${element.image} class="card-img-top card-image">
+            <img  src=${element.img} class="card-img-top card-image">
             </p>
             
 <div class="row g-2">
   <div class="col-sm-6">
-    <a>Precio: ${element.price}</a>
+    <a>Precio: ${element.precio}</a>
   </div>
   <div class="col-sm">
   <a>Cantidad: <input type="number" id="cantidad${index}" class="form-control" placeholder="" aria-label="State" value="1" max="5" min ="1"></a>
@@ -142,4 +131,4 @@ if (localStorage.getItem("productos") == null && cardGroup[0].childElementCount 
                     `;
     cardGroup[0].insertAdjacentHTML("beforeend", html);
   });
-} */
+}
