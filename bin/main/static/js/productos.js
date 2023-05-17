@@ -36,7 +36,7 @@ fetch('http://127.0.0.1:8080/api/producto/',{method:'GET'})
         let html =
           `<div class="col ">
                     <div class="card h-350 ">
-                        <img  src=${"src/main/resources/static/src/"element.img} class="card-img-top card-image">
+                        <img  src=${element.img} class="card-img-top card-image">
                             <div class="card-body">
                                 <h5 class="card-title">${element.nombre}</h5>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#openModal${index}">
